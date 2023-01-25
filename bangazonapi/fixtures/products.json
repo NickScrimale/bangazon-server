@@ -1,0 +1,15 @@
+[
+    {
+        "model": "bangazonapi.products",
+        "pk": 1,
+        "fields": {
+            "price": 50.99,
+            "title":"boa",
+            "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo",
+            "image_url":"",
+            "quantity_available": 1,
+            "uid": 1,
+            "type": "Animal"
+        }
+    }
+]
