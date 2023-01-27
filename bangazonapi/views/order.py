@@ -31,7 +31,7 @@ class OrderView(ViewSet):
         Returns
             Response -- JSON serialized order instance
         """
-        user = User.objects.get(id=request.data["user"])
+        user = User.objects.get(id=request.data["user_id"])
 
         order = Order.objects.create(
         total_cost=request.data["total_cost"],
@@ -56,7 +56,7 @@ class OrderView(ViewSet):
         order.quantity = request.data["quantity"]
         
 
-        user = User.objects.get(pk=request.data["user"])
+        user = User.objects.get(pk=request.data["user_id"])
         order.user = user
         order.save()
 

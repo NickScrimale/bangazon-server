@@ -30,7 +30,7 @@ class ProductView(ViewSet):
         Returns
             Response -- JSON serialized game instance
         """
-        user = User.objects.get(id=request.data["user"])
+        user = User.objects.get(id=request.data["uid"])
 
         product = Product.objects.create(
         price=request.data["price"],
@@ -38,7 +38,7 @@ class ProductView(ViewSet):
         description=request.data["description"],
         image_url=request.data["image_url"],
         quantity_available=request.data["quantity_available"],
-        type=request.data["product_type"],
+        type=request.data["type"],
         uid = user
         )
         serializer = ProductSerializer(product)
@@ -56,9 +56,9 @@ class ProductView(ViewSet):
         product.description = request.data["description"]
         product.image_url = request.data["image_url"]
         product.quantity_available = request.data["quantity_available"]
-        product.type = request.data["product_type"],
+        product.type = request.data["type"],
 
-        user = User.objects.get(pk=request.data["user"])
+        user = User.objects.get(pk=request.data["uid"])
         product.user = user
         product.save()
 
@@ -74,5 +74,5 @@ class ProductSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Product
-        fields = ('id', 'user', 'price', 'title', 'description', 'image_url', 'quantity_available', 'product_type') 
+        fields = ('id', 'uid', 'price', 'title', 'description', 'image_url', 'quantity_available', 'type') 
         depth = 1

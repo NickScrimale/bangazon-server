@@ -32,7 +32,7 @@ class UserView(ViewSet):
         Returns
             Response -- JSON serialized user instance
         """
-        bangazon_user = User.objects.get(uid=request.data["user_id"])
+        bangazon_user = User.objects.get(uid=request.data["uid"])
 
         bangazon_user = User.objects.create(
         first_name = request.data["first_name"],
