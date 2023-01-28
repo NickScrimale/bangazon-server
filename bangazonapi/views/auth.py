@@ -22,11 +22,11 @@ def check_user(request):
     # If authentication was successful, respond with their token
         data = {
             'id': user.id,
-            'uid': user.uid,
             'first_name': user.first_name,
             'last_name': user.last_name,
-            'image_url': user.image_url,
+            'uid': user.uid,
             'created_on': user.created_on,
+            'image_url': user.image_url,
         }
         return Response(data)
     except:
@@ -43,9 +43,9 @@ def register_user(request):
     '''
     # Now save the user info in the rareapi_user table
     user = User.objects.create(
-        uid=request.data['uid'],
         first_name=request.data['first_name'],
         last_name=request.data['last_name'],
+        uid=request.data['uid'],
         image_url=request.data['image_url'],
         created_on=request.data['created_on'],
     )
@@ -53,10 +53,10 @@ def register_user(request):
     # Return the user info to the client
     data = {
             'id': user.id,
-            'uid': user.uid,
-            'first_name': user.bio,
+            'first_name': user.first_name,
             'last_name': user.last_name,
-            'image_url': user.image_url,
+            'uid': user.uid,
             'created_on': user.created_on,
+            'image_url': user.image_url,
     }
     return Response(data)
